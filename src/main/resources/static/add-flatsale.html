@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0">
+
+    <title>Add Flat Sale - Skyline CRM</title>
+
+    <!-- Bootstrap -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+            rel="stylesheet">
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" href="dashboard.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-dark">
+
+    <div class="container-fluid">
+
+        <span class="navbar-brand mb-0 h1">
+            SKYLINE CRM
+        </span>
+
+
+        <div class="text-white">
+
+            <i class="bi bi-person-circle"></i>
+            <span id="loggedInUser">User</span>
+
+            <button
+                    class="btn btn-outline-light btn-sm ms-3"
+                    onclick="logout()">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= MAIN LAYOUT ================= -->
+
+<div class="container-fluid">
+
+    <div class="row">
+
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <div class="col-md-2 sidebar p-3">
+
+            <h6 class="mb-3">
+                MENU
+            </h6>
+
+
+            <a
+                    href="dashboard.html"
+                    class="nav-link">
+
+                <i class="bi bi-speedometer2 me-2"></i>
+                Dashboard
+
+            </a>
+
+
+            <a
+                    href="allenquiry.html"
+                    class="nav-link">
+
+                <i class="bi bi-person-lines-fill me-2"></i>
+                Enquiries
+
+            </a>
+
+
+            <a
+                    href="followup.html"
+                    class="nav-link">
+
+                <i class="bi bi-telephone me-2"></i>
+                Follow Up
+
+            </a>
+
+
+            <a
+                    href="lead.html"
+                    class="nav-link">
+
+                <i class="bi bi-people me-2"></i>
+                Lead
+
+            </a>
+
+
+            <a
+                    href="daybook.html"
+                    class="nav-link">
+
+                <i class="bi bi-book me-2"></i>
+                Day Book
+
+            </a>
+
+
+            <a
+                    href="pettycash.html"
+                    class="nav-link">
+
+                <i class="bi bi-cash-stack me-2"></i>
+                Petty Cash
+
+            </a>
+
+
+            <a
+                    href="vendorpayment.html"
+                    class="nav-link"
+                    id="vendorPaymentMenu">
+
+                <i class="bi bi-credit-card me-2"></i>
+                Vendor Payment
+
+            </a>
+
+
+            <a
+                    href="employeepayment.html"
+                    class="nav-link"
+            id="employeePaymentMenu">
+
+
+                <i class="bi bi-wallet2 me-2"></i>
+                Employee Payment
+
+            </a>
+
+
+            <a
+                    href="flatsale.html"
+                    class="nav-link active">
+
+                <i class="bi bi-house me-2"></i>
+                Flat Sales
+
+            </a>
+
+        </div>
+
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <div class="col-md-10 p-4">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="mb-4">
+
+                <h4 class="dashboard-title mb-1">
+                    Add Flat Sale
+                </h4>
+
+                <small class="text-muted">
+                    Enter flat sale details
+                </small>
+
+            </div>
+
+
+
+            <!-- ================= FORM CARD ================= -->
+
+            <div class="card dashboard-card shadow-sm">
+
+                <div class="card-body">
+
+
+                    <form id="flatSaleForm">
+
+
+                        <div class="row g-3">
+
+
+                            <!-- Sale Date -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Sale Date
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input
+                                        type="date"
+                                        class="form-control"
+                                        id="saleDate"
+                                        required>
+
+                            </div>
+
+
+
+                            <!-- Customer Name -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Customer Name
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="customerName"
+                                        placeholder="Enter customer name"
+                                        required>
+
+                            </div>
+
+
+
+                            <!-- Mobile -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Mobile
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input
+                                        type="tel"
+                                        class="form-control"
+                                        id="mobile"
+                                        placeholder="Enter mobile number"
+                                        required>
+
+                            </div>
+
+
+
+                            <!-- Project -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Project
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="project"
+                                        placeholder="Enter project name"
+                                        required>
+
+                            </div>
+
+
+
+                            <!-- Flat No -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Flat No
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="flatNo"
+                                        placeholder="Enter flat number"
+                                        required>
+
+                            </div>
+
+
+
+                            <!-- Flat Type -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Flat Type
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <select
+                                        class="form-select"
+                                        id="flatType"
+                                        required>
+
+                                    <option value="">
+                                        Select Flat Type
+                                    </option>
+
+                                    <option value="1 BHK">
+                                        1 BHK
+                                    </option>
+
+                                    <option value="2 BHK">
+                                        2 BHK
+                                    </option>
+
+                                    <option value="3 BHK">
+                                        3 BHK
+                                    </option>
+
+                                    <option value="4 BHK">
+                                        4 BHK
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- Sale Amount -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Sale Amount (₹)
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input
+                                        type="number"
+                                        class="form-control"
+                                        id="saleAmount"
+                                        placeholder="Enter sale amount"
+                                        min="0"
+                                        step="0.01"
+                                        required>
+
+                            </div>
+
+
+
+                            <!-- Booking Amount -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Booking Amount (₹)
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input
+                                        type="number"
+                                        class="form-control"
+                                        id="bookingAmount"
+                                        placeholder="Enter booking amount"
+                                        min="0"
+                                        step="0.01"
+                                        required>
+
+                            </div>
+
+
+
+                            <!-- Payment Mode -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Payment Mode
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <select
+                                        class="form-select"
+                                        id="paymentMode"
+                                        required>
+
+                                    <option value="">
+                                        Select Payment Mode
+                                    </option>
+
+                                    <option value="Cash">
+                                        Cash
+                                    </option>
+
+                                    <option value="UPI">
+                                        UPI
+                                    </option>
+
+                                    <option value="Bank Transfer">
+                                        Bank Transfer
+                                    </option>
+
+                                    <option value="Cheque">
+                                        Cheque
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- Sale Status -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Sale Status
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <select
+                                        class="form-select"
+                                        id="saleStatus"
+                                        required>
+
+                                    <option value="">
+                                        Select Status
+                                    </option>
+
+                                    <option value="Booked">
+                                        Booked
+                                    </option>
+
+                                    <option value="Sold">
+                                        Sold
+                                    </option>
+
+                                    <option value="Cancelled">
+                                        Cancelled
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- Remarks -->
+
+                            <div class="col-md-12">
+
+                                <label class="form-label">
+                                    Remarks
+                                </label>
+
+                                <textarea
+                                        class="form-control"
+                                        id="remarks"
+                                        rows="4"
+                                        placeholder="Enter remarks (optional)"></textarea>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- BUTTONS -->
+
+                        <div class="mt-4">
+
+                            <button
+                                    type="submit"
+                                    class="btn btn-primary">
+
+                                <i class="bi bi-check-circle me-1"></i>
+                                Save Flat Sale
+
+                            </button>
+
+
+                            <button
+                                    type="button"
+                                    class="btn btn-secondary ms-2"
+                                    onclick="goBack()">
+
+                                <i class="bi bi-arrow-left me-1"></i>
+                                Back
+
+                            </button>
+
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    const API_URL =
+        "/skyline/dashboard/flatsale";
+
+
+    window.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            document.getElementById(
+                "saleDate"
+            ).value =
+                new Date()
+                    .toISOString()
+                    .split("T")[0];
+
+        }
+    );
+
+
+
+    document.getElementById(
+        "flatSaleForm"
+    )
+        .addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
+
+
+                const flatSale = {
+
+                    saleDate:
+                    document.getElementById(
+                        "saleDate"
+                    ).value,
+
+                    customerName:
+                    document.getElementById(
+                        "customerName"
+                    ).value,
+
+                    mobile:
+                    document.getElementById(
+                        "mobile"
+                    ).value,
+
+                    project:
+                    document.getElementById(
+                        "project"
+                    ).value,
+
+                    flatNo:
+                    document.getElementById(
+                        "flatNo"
+                    ).value,
+
+                    flatType:
+                    document.getElementById(
+                        "flatType"
+                    ).value,
+
+                    saleAmount:
+                    document.getElementById(
+                        "saleAmount"
+                    ).value,
+
+                    bookingAmount:
+                    document.getElementById(
+                        "bookingAmount"
+                    ).value,
+
+                    paymentMode:
+                    document.getElementById(
+                        "paymentMode"
+                    ).value,
+
+                    saleStatus:
+                    document.getElementById(
+                        "saleStatus"
+                    ).value,
+
+                    remarks:
+                    document.getElementById(
+                        "remarks"
+                    ).value
+
+                };
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            API_URL,
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body:
+                                    JSON.stringify(
+                                        flatSale
+                                    )
+                            }
+                        );
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "Failed to save flat sale"
+                        );
+
+                    }
+
+
+                    alert(
+                        "Flat Sale saved successfully!"
+                    );
+
+
+                    window.location.href =
+                        "flatsale.html";
+
+                }
+                catch (error) {
+
+                    console.error(error);
+
+                    alert(
+                        "Failed to save flat sale."
+                    );
+
+                }
+
+            }
+        );
+
+
+
+    function goBack() {
+
+        window.location.href =
+            "flatsale.html";
+
+    }
+
+
+
+    function logout() {
+
+        const confirmLogout =
+            confirm(
+                "Are you sure you want to logout?"
+            );
+
+
+        if (confirmLogout) {
+
+            window.location.href =
+                "/login.html";
+
+        }
+
+    }
+
+</script>
+<script src="role.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,297 @@
+/* =====================================================
+   SKYLINE CRM - LEAD
+   ===================================================== */
+
+
+/* PAGE */
+
+body {
+    background-color: #f5f7fb;
+}
+
+
+/* PAGE TITLE */
+
+.page-title {
+    font-weight: 700;
+    color: #1f2937;
+}
+
+
+.page-subtitle {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+
+/* BACK BUTTON */
+
+.back-btn {
+    font-size: 13px;
+    color: #4f46e5;
+    text-decoration: none;
+}
+
+
+.back-btn:hover {
+    color: #3730a3;
+}
+
+
+/* FILTER CARD */
+
+.lead-filter-card {
+    border: none;
+    border-radius: 12px;
+    background: white;
+}
+
+
+/* LEAD CARD */
+
+.lead-card {
+    border: none;
+    border-radius: 12px;
+    background: white;
+}
+
+
+/* CARD TITLE */
+
+.card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+
+.card-subtitle {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+
+/* FORM */
+
+.form-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+}
+
+
+.form-select,
+.form-control {
+    font-size: 13px;
+    border-color: #dee2e6;
+}
+
+
+.form-select:focus,
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.10);
+}
+
+
+/* SEARCH */
+
+.search-box {
+    width: 250px;
+}
+
+
+/* TABLE */
+
+.table {
+    font-size: 13px;
+}
+
+
+.table thead th {
+    background-color: #f8f9fc;
+    color: #374151;
+    font-weight: 600;
+    white-space: nowrap;
+    border-bottom: 1px solid #dee2e6;
+}
+
+
+.table tbody td {
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+
+.table tbody tr:hover {
+    background-color: #f8f9ff;
+}
+
+
+/* LEAD ID */
+
+.lead-id {
+    font-weight: 600;
+    color: #0d6efd;
+}
+
+
+/* CUSTOMER */
+
+.customer-name {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+
+/* SOURCE */
+
+.badge-source {
+    background-color: #fff3cd;
+    color: #997404;
+    padding: 5px 9px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+
+/* STATUS */
+
+.badge-status {
+    padding: 5px 9px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+
+/* NEW */
+
+.status-new {
+    background-color: #e8f0fe;
+    color: #2563eb;
+}
+
+
+/* CONTACTED */
+
+.status-contacted {
+    background-color: #fff3cd;
+    color: #997404;
+}
+
+
+/* IN PROGRESS */
+
+.status-progress {
+    background-color: #eee5ff;
+    color: #7040a5;
+}
+
+
+/* FOLLOW UP */
+
+.status-followup {
+    background-color: #fff0df;
+    color: #b76e00;
+}
+
+
+/* CONVERTED */
+
+.status-converted {
+    background-color: #e8f7ee;
+    color: #198754;
+}
+
+
+/* ACTION BUTTONS */
+
+.btn-view {
+    color: #198754;
+    border: 1px solid #198754;
+    background: white;
+}
+
+
+.btn-view:hover {
+    background-color: #198754;
+    color: white;
+}
+
+
+.btn-edit {
+    color: #0d6efd;
+    border: 1px solid #0d6efd;
+    background: white;
+}
+
+
+.btn-edit:hover {
+    background-color: #0d6efd;
+    color: white;
+}
+
+
+.btn-delete {
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    background: white;
+}
+
+
+.btn-delete:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+
+/* LOADING */
+
+#loading {
+    text-align: center;
+    padding: 30px;
+    color: #6b7280;
+}
+
+
+/* NO DATA */
+
+#noData {
+    text-align: center;
+    padding: 30px;
+    color: #6b7280;
+    display: none;
+}
+
+
+/* VIEW MODAL */
+
+#viewLeadModal small {
+    color: #6b7280;
+    font-size: 12px;
+}
+
+
+.view-value {
+    margin-top: 3px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .search-box {
+        width: 100%;
+    }
+
+    .lead-card .card-body {
+        padding: 15px !important;
+    }
+
+}

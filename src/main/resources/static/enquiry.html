@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Skyline CRM - Add Enquiry</title>
+
+
+    <!-- ================= BOOTSTRAP ================= -->
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+
+    <!-- ================= BOOTSTRAP ICONS ================= -->
+
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- ================= DASHBOARD CSS ================= -->
+
+    <link
+            rel="stylesheet"
+            href="dashboard.css">
+
+
+    <style>
+
+        /* =========================================
+           ENQUIRY PAGE
+           ========================================= */
+
+        body {
+            background-color: #f5f7fb;
+        }
+
+
+        /* Page heading */
+
+        .page-title {
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+
+        .page-subtitle {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+
+        /* Enquiry Card */
+
+        .enquiry-card {
+            border: none;
+            border-radius: 12px;
+            background: white;
+        }
+
+
+        /* Card heading */
+
+        .form-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+
+        .form-subtitle {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+
+        /* Horizontal line */
+
+        .section-line {
+            height: 1px;
+            background-color: #e5e7eb;
+            margin: 15px 0 22px;
+        }
+
+
+        /* Labels */
+
+        .form-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 6px;
+        }
+
+
+        /* Inputs */
+
+        .form-control,
+        .form-select {
+
+            height: 42px;
+
+            border: 1px solid #d9dee7;
+
+            border-radius: 7px;
+
+            font-size: 13px;
+
+            box-shadow: none;
+        }
+
+
+        .form-control:focus,
+        .form-select:focus {
+
+            border-color: #6366f1;
+
+            box-shadow: 0 0 0 2px rgba(99,102,241,0.10);
+        }
+
+
+        /* Required star */
+
+        .required {
+            color: #dc3545;
+        }
+
+
+        /* Buttons */
+
+        .btn-save {
+
+            background-color: #4f46e5;
+
+            color: white;
+
+            border: none;
+
+            padding: 9px 22px;
+
+            border-radius: 7px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        .btn-save:hover {
+
+            background-color: #4338ca;
+
+            color: white;
+        }
+
+
+        .btn-clear {
+
+            padding: 9px 22px;
+
+            border-radius: 7px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        /* Back button */
+
+        .back-btn {
+
+            font-size: 13px;
+
+            color: #4f46e5;
+
+            text-decoration: none;
+        }
+
+
+        .back-btn:hover {
+
+            color: #3730a3;
+        }
+
+
+        /* Success message */
+
+        #message {
+
+            margin-top: 15px;
+
+            font-size: 14px;
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =================================================
+     NAVBAR
+     ================================================= -->
+
+<nav class="navbar navbar-dark">
+
+    <div class="container-fluid">
+
+
+        <!-- Logo -->
+
+        <a class="navbar-brand" href="dashboard.html">
+
+            <i class="bi bi-buildings"></i>
+
+            SKYLINE CRM
+
+        </a>
+
+
+        <!-- Admin -->
+
+        <div class="text-white">
+
+            <span class="me-3">
+
+                <i class="bi bi-person-circle"></i>
+
+                 <span id="loggedInUser">User</span>
+
+            </span>
+
+
+            <button
+                    class="btn btn-outline-light btn-sm"
+                    onclick="logout()">
+
+                <i class="bi bi-box-arrow-right"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</nav>
+
+
+
+<!-- =================================================
+     MAIN AREA
+     ================================================= -->
+
+<div class="container-fluid">
+
+    <div class="row">
+
+
+        <!-- =================================================
+             SIDEBAR
+             ================================================= -->
+
+        <div class="col-md-2 sidebar p-3">
+
+
+            <h6 class="text-muted mb-3">
+
+                MAIN MENU
+
+            </h6>
+
+
+            <ul class="nav flex-column">
+
+
+                <!-- Dashboard -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="dashboard.html">
+
+                        <i class="bi bi-speedometer2 me-2"></i>
+
+                        Dashboard
+
+                    </a>
+
+                </li>
+
+
+                <!-- Enquiries -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link active"
+                            href="allenquiry.html">
+
+                        <i class="bi bi-person-lines-fill me-2"></i>
+
+                        Enquiries
+
+                    </a>
+
+                </li>
+
+
+                <!-- Follow Ups -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="followUp.html">
+
+                        <i class="bi bi-arrow-repeat me-2"></i>
+
+                        Follow Ups
+
+                    </a>
+
+                </li>
+
+
+                <!-- Day Book -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="daybook.html">
+
+                        <i class="bi bi-journal-text me-2"></i>
+
+                        Day Book
+
+                    </a>
+
+                </li>
+
+
+                <!-- Petty Cash -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="pettycash.html">
+
+                        <i class="bi bi-wallet2 me-2"></i>
+
+                        Petty Cash
+
+                    </a>
+
+                </li>
+
+
+                <!-- Vendor Payment -->
+
+                <li class="nav-item"
+                    id="vendorPaymentMenu">
+
+                    <a
+                            class="nav-link"
+                            href="vendorpayment.html">
+
+                        <i class="bi bi-building me-2"></i>
+
+                        Vendor Payment
+
+                    </a>
+
+                </li>
+                <li class="nav-item"
+                    id="employeePaymentMenu">
+
+                    <a
+                            class="nav-link"
+                            href="employeepayment.html">
+
+                        <i class="bi bi-building me-2"></i>
+
+                        Employee Payment
+
+                    </a>
+
+                </li>
+
+
+                <!-- Flat Sales -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="flatsale.html">
+
+                        <i class="bi bi-house-check me-2"></i>
+
+                        Flat Sales
+
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             CONTENT
+             ================================================= -->
+
+        <div class="col-md-10 p-4">
+
+
+            <!-- ================= PAGE HEADING ================= -->
+
+            <div class="mb-4">
+
+                <a
+                        href="dashboard.html"
+                        class="back-btn">
+
+                    <i class="bi bi-arrow-left"></i>
+
+                    Back to Dashboard
+
+                </a>
+
+
+                <h2 class="page-title mt-2">
+
+                    Add New Enquiry
+
+                </h2>
+
+
+                <p class="page-subtitle">
+
+                    Enter customer enquiry details below.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ENQUIRY FORM CARD
+                 ================================================= -->
+
+            <div class="card enquiry-card shadow-sm">
+
+
+                <div class="card-body p-4">
+
+
+                    <!-- Card Header -->
+
+                    <div>
+
+                        <div class="form-title">
+
+                            <i class="bi bi-person-lines-fill me-2"></i>
+
+                            Flat Enquiry Details
+
+                        </div>
+
+
+                        <div class="form-subtitle mt-1">
+
+                            Please provide the customer's requirement
+                            and enquiry information.
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="section-line"></div>
+
+
+
+                    <!-- =================================================
+                         FORM
+                         ================================================= -->
+
+                    <form id="enquiryForm">
+
+
+                        <!-- ================= ROW 1 ================= -->
+
+                        <div class="row g-3">
+
+
+                            <!-- Enquiry Date -->
+
+                            <div class="col-md-4">
+
+                                <label
+                                        class="form-label"
+                                        for="enquiryDate">
+
+                                    Enquiry Date
+                                    <span class="required">*</span>
+
+                                </label>
+
+
+                                <input
+                                        type="date"
+                                        class="form-control"
+                                        id="enquiryDate"
+                                        required>
+
+                            </div>
+
+
+
+                            <!-- Enquiry Number -->
+
+                            <div class="col-md-4">
+
+                                <label
+                                        class="form-label"
+                                        for="enquiryNo">
+
+                                    Enquiry No.
+
+                                </label>
+
+
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="enquiryNo"
+                                        value="ENQ-20260829-001"
+                                        readonly>
+
+                            </div>
+
+
+
+                            <!-- Project -->
+
+                            <div class="col-md-4">
+
+                                <label
+                                        class="form-label"
+                                        for="project">
+
+                                    Project / Building
+                                    <span class="required">*</span>
+
+                                </label>
+
+
+                                <select
+                                        class="form-select"
+                                        id="project"
+                                        required>
+
+                                    <option value="">
+                                        Select Project
+                                    </option>
+
+                                    <option>
+                                        Skyline Residency
+                                    </option>
+
+                                    <option>
+                                        Skyline Heights
+                                    </option>
+
+                                    <option>
+                                        Skyline Towers
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- ================= ROW 2 ================= -->
+
+                        <div class="row g-3 mt-1">
+
+
+                            <!-- Customer Name -->
+
+                            <div class="col-md-4">
+
+                                <label
+                                        class="form-label"
+                                        for="customerName">
+
+                                    Customer Name
+                                    <span class="required">*</span>
+
+                                </label>
+
+
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="customerName"
+                                        placeholder="Enter customer name"
+                                        required>
+
+                            </div>
+
+
+
+                            <!-- Mobile -->
+
+                            <div class="col-md-4">
+
+                                <label
+                                        class="form-label"
+                                        for="mobile">
+
+                                    Mobile
+                                    <span class="required">*</span>
+
+                                </label>
+
+
+                                <input
+                                        type="tel"
+                                        class="form-control"
+                                        id="mobile"
+                                        placeholder="Enter mobile number"
+                                        maxlength="10"
+                                        required>
+
+                            </div>
+
+
+
+                            <!-- Flat Type -->
+
+                            <div class="col-md-4">
+
+                                <label
+                                        class="form-label"
+                                        for="flatType">
+
+                                    Flat Type
+                                    <span class="required">*</span>
+
+                                </label>
+
+
+                                <select
+                                        class="form-select"
+                                        id="flatType"
+                                        required>
+
+                                    <option value="">
+                                        Select Flat Type
+                                    </option>
+
+                                    <option>
+                                        1 BHK
+                                    </option>
+
+                                    <option>
+                                        2 BHK
+                                    </option>
+
+                                    <option>
+                                        3 BHK
+                                    </option>
+
+                                    <option>
+                                        4 BHK
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- ================= ROW 3 ================= -->
+
+                        <div class="row g-3 mt-1">
+
+
+                            <!-- Budget -->
+
+                            <div class="col-md-4">
+
+                                <label
+                                        class="form-label"
+                                        for="budget">
+
+                                    Budget (₹)
+
+                                </label>
+
+
+                                <input
+                                        type="number"
+                                        class="form-control"
+                                        id="budget"
+                                        placeholder="Enter budget">
+
+                            </div>
+
+
+
+                            <!-- Source -->
+
+                            <div class="col-md-4">
+
+                                <label
+                                        class="form-label"
+                                        for="source">
+
+                                    Source
+
+                                </label>
+
+
+                                <select
+                                        class="form-select"
+                                        id="source">
+
+                                    <option value="">
+                                        Select Source
+                                    </option>
+
+                                    <option>
+                                        Website
+                                    </option>
+
+                                    <option>
+                                        Facebook
+                                    </option>
+
+                                    <option>
+                                        Instagram
+                                    </option>
+
+                                    <option>
+                                        Reference
+                                    </option>
+
+                                    <option>
+                                        Walk-in
+                                    </option>
+
+                                    <option>
+                                        Advertisement
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- Preferred Location -->
+
+                            <div class="col-md-4">
+
+                                <label
+                                        class="form-label"
+                                        for="location">
+
+                                    Preferred Location
+
+                                </label>
+
+
+                                <select
+                                        class="form-select"
+                                        id="location">
+
+                                    <option value="">
+                                        Select Location
+                                    </option>
+
+                                    <option>
+                                        Pune
+                                    </option>
+
+                                    <option>
+                                        Baramati
+                                    </option>
+
+                                    <option>
+                                        Hadapsar
+                                    </option>
+
+                                    <option>
+                                        Kharadi
+                                    </option>
+
+                                    <option>
+                                        Wakad
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- ================= ROW 4 ================= -->
+
+                        <div class="row g-3 mt-1">
+
+
+                            <!-- Bedrooms -->
+
+                            <div class="col-md-4">
+
+                                <label
+                                        class="form-label"
+                                        for="bedrooms">
+
+                                    No. of Bedrooms
+
+                                </label>
+
+
+                                <select
+                                        class="form-select"
+                                        id="bedrooms">
+
+                                    <option value="">
+                                        Select Bedrooms
+                                    </option>
+
+                                    <option>
+                                        1
+                                    </option>
+
+                                    <option>
+                                        2
+                                    </option>
+
+                                    <option>
+                                        3
+                                    </option>
+
+                                    <option>
+                                        4
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- Purpose -->
+
+                            <div class="col-md-4">
+
+                                <label
+                                        class="form-label"
+                                        for="purpose">
+
+                                    Purpose
+
+                                </label>
+
+
+                                <select
+                                        class="form-select"
+                                        id="purpose">
+
+                                    <option value="">
+                                        Select Purpose
+                                    </option>
+
+                                    <option>
+                                        Self Use
+                                    </option>
+
+                                    <option>
+                                        Investment
+                                    </option>
+
+                                    <option>
+                                        Rental
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- Enquiry Type -->
+
+                            <div class="col-md-4">
+
+                                <label
+                                        class="form-label"
+                                        for="enquiryType">
+
+                                    Enquiry Type
+
+                                </label>
+
+
+                                <select
+                                        class="form-select"
+                                        id="enquiryType">
+
+                                    <option value="">
+                                        Select Type
+                                    </option>
+
+                                    <option>
+                                        New
+                                    </option>
+
+                                    <option>
+                                        Follow Up
+                                    </option>
+
+                                    <option>
+                                        Site Visit
+                                    </option>
+
+                                    <option>
+                                        Booking
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             BUTTONS
+                             ================================================= -->
+
+                        <div class="mt-4 pt-3 border-top">
+
+
+                            <button
+                                    type="submit"
+                                    class="btn btn-save me-2"
+                                    id="saveBtn">
+
+                                <i class="bi bi-check-circle me-1"></i>
+
+                                Save Enquiry
+
+                            </button>
+
+
+
+                            <button
+                                    type="button"
+                                    class="btn btn-outline-secondary btn-clear"
+                                    onclick="clearForm()">
+
+                                <i class="bi bi-x-circle me-1"></i>
+
+                                Clear
+
+                            </button>
+
+
+                        </div>
+
+
+
+                        <!-- Message -->
+
+                        <div id="message"></div>
+
+
+                    </form>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =================================================
+     JAVASCRIPT
+     ================================================= -->
+
+<script>
+
+
+    // ============================================
+    // GET EDIT ID FROM URL
+    // ============================================
+
+    const urlParams =
+        new URLSearchParams(window.location.search);
+
+    const editId =
+        urlParams.get("id");
+
+
+
+    // ============================================
+    // PAGE LOAD
+    // ============================================
+
+    window.addEventListener("DOMContentLoaded", function () {
+
+        if (editId) {
+
+            // Change page title
+
+            document.querySelector(".page-title").innerText =
+                "Edit Enquiry";
+
+
+            // Change button text
+
+            document.getElementById("saveBtn").innerHTML =
+                '<i class="bi bi-check-circle me-1"></i> Update Enquiry';
+
+
+            // Load existing enquiry
+
+            loadEnquiry(editId);
+
+        } else {
+
+            // Add mode
+            // Set today's date
+
+            document.getElementById("enquiryDate").value =
+                new Date().toISOString().split("T")[0];
+
+        }
+
+    });
+
+
+
+    // ============================================
+    // LOAD EXISTING ENQUIRY
+    // ============================================
+
+    async function loadEnquiry(id) {
+
+        try {
+
+            const response = await fetch(
+                "/skyline/dashboard/enquiry/" + id
+            );
+
+
+            if (!response.ok) {
+
+                throw new Error("Enquiry not found");
+
+            }
+
+
+            const enquiry =
+                await response.json();
+
+
+            // Fill form fields
+
+            document.getElementById("enquiryDate").value =
+                enquiry.enquiryDate || "";
+
+
+            document.getElementById("enquiryNo").value =
+                enquiry.enquiryNo || "";
+
+
+            document.getElementById("project").value =
+                enquiry.project || "";
+
+
+            document.getElementById("customerName").value =
+                enquiry.customerName || "";
+
+
+            document.getElementById("mobile").value =
+                enquiry.mobile || "";
+
+
+            document.getElementById("flatType").value =
+                enquiry.flatType || "";
+
+
+            document.getElementById("budget").value =
+                enquiry.budget || "";
+
+
+            document.getElementById("source").value =
+                enquiry.source || "";
+
+
+            document.getElementById("location").value =
+                enquiry.preferredLocation || "";
+
+
+            document.getElementById("bedrooms").value =
+                enquiry.bedrooms || "";
+
+
+            document.getElementById("purpose").value =
+                enquiry.purpose || "";
+
+
+            document.getElementById("enquiryType").value =
+                enquiry.enquiryType || "";
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert("Failed to load enquiry.");
+
+        }
+
+    }
+
+
+
+    // ============================================
+    // SAVE / UPDATE ENQUIRY
+    // ============================================
+
+    document.getElementById("enquiryForm")
+        .addEventListener("submit", async function (event) {
+
+            event.preventDefault();
+
+
+            // ====================================
+            // GET FORM DATA
+            // ====================================
+
+            const enquiry = {
+
+                enquiryDate:
+                document.getElementById("enquiryDate").value,
+
+                enquiryNo:
+                document.getElementById("enquiryNo").value,
+
+                project:
+                document.getElementById("project").value,
+
+                flatType:
+                document.getElementById("flatType").value,
+
+                customerName:
+                document.getElementById("customerName").value,
+
+                mobile:
+                document.getElementById("mobile").value,
+
+                budget:
+                document.getElementById("budget").value,
+
+                source:
+                document.getElementById("source").value,
+
+                preferredLocation:
+                document.getElementById("location").value,
+
+                bedrooms:
+                document.getElementById("bedrooms").value,
+
+                purpose:
+                document.getElementById("purpose").value,
+
+                enquiryType:
+                document.getElementById("enquiryType").value
+
+            };
+
+
+            // ====================================
+            // ADD OR EDIT?
+            // ====================================
+
+            let url;
+            let method;
+
+
+            if (editId) {
+
+                // EDIT EXISTING ENQUIRY
+
+                url =
+                    "/skyline/dashboard/enquiry/" + editId;
+
+                method = "PUT";
+
+            } else {
+
+                // ADD NEW ENQUIRY
+
+                url =
+                    "/skyline/dashboard/enquiry";
+
+                method = "POST";
+
+            }
+
+
+            // ====================================
+            // SEND REQUEST TO SPRING BOOT
+            // ====================================
+
+            try {
+
+                const response =
+                    await fetch(url, {
+
+                        method: method,
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify(enquiry)
+
+                    });
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Failed to save enquiry"
+                    );
+
+                }
+
+
+                // =================================
+                // SUCCESS MESSAGE
+                // =================================
+
+                if (editId) {
+
+                    alert(
+                        "Enquiry updated successfully!"
+                    );
+
+                } else {
+
+                    alert(
+                        "Enquiry saved successfully!"
+                    );
+
+                }
+
+
+                // Go back to All Enquiry page
+
+                window.location.href =
+                    "allenquiry.html";
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    "Server connection failed."
+                );
+
+            }
+
+        });
+
+
+
+    // ============================================
+    // CLEAR FORM
+    // ============================================
+
+    function clearForm() {
+
+        document.getElementById("enquiryForm").reset();
+
+
+        // Set today's date again
+
+        document.getElementById("enquiryDate").value =
+            new Date().toISOString().split("T")[0];
+
+
+        // Keep enquiry number
+
+        document.getElementById("enquiryNo").value =
+            "ENQ-20260829-001";
+
+
+        // Clear message
+
+        document.getElementById("message").innerHTML =
+            "";
+
+    }
+
+
+
+    // ============================================
+    // LOGOUT
+    // ============================================
+
+    function logout() {
+
+        const confirmLogout =
+            confirm("Are you sure you want to logout?");
+
+
+        if (confirmLogout) {
+
+            window.location.href =
+                "/login.html";
+
+        }
+
+    }
+
+</script>
+
+
+<script src="enquiry.js"></script>
+<script src="role.js"></script>
+
+
+</body>
+
+</html>

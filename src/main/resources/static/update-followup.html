@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Skyline CRM - Update Follow Up</title>
+
+
+    <!-- Bootstrap -->
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+
+    <!-- Bootstrap Icons -->
+
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- Dashboard CSS -->
+
+    <link
+            rel="stylesheet"
+            href="dashboard.css">
+
+
+    <style>
+
+        body {
+            background-color: #f5f7fb;
+        }
+
+
+        /* ===============================
+           PAGE TITLE
+           =============================== */
+
+        .page-title {
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .page-subtitle {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+
+        /* ===============================
+           CARD
+           =============================== */
+
+        .followup-card {
+
+            border: none;
+
+            border-radius: 12px;
+
+            background: white;
+
+        }
+
+
+        /* ===============================
+           FORM
+           =============================== */
+
+        .form-label {
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            color: #374151;
+
+        }
+
+
+        .form-control,
+        .form-select {
+
+            font-size: 13px;
+
+            padding: 10px;
+
+            border-radius: 7px;
+
+        }
+
+
+        .form-control:focus,
+        .form-select:focus {
+
+            box-shadow: none;
+
+            border-color: #4f46e5;
+
+        }
+
+
+        /* ===============================
+           BUTTONS
+           =============================== */
+
+        .btn-update {
+
+            background-color: #4f46e5;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 7px;
+
+            padding: 9px 18px;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+        }
+
+
+        .btn-update:hover {
+
+            background-color: #4338ca;
+
+            color: white;
+
+        }
+
+
+        .btn-cancel {
+
+            border-radius: 7px;
+
+            padding: 9px 18px;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =================================================
+     NAVBAR
+     ================================================= -->
+
+<nav class="navbar navbar-dark">
+
+    <div class="container-fluid">
+
+
+        <!-- Logo -->
+
+        <a class="navbar-brand"
+           href="dashboard.html">
+
+            <i class="bi bi-buildings"></i>
+
+            SKYLINE CRM
+
+        </a>
+
+
+        <!-- Admin -->
+
+        <div class="text-white">
+
+            <span class="me-3">
+
+                <i class="bi bi-person-circle"></i>
+
+                Admin
+
+            </span>
+
+
+            <button
+                    class="btn btn-outline-light btn-sm"
+                    onclick="logout()">
+
+                <i class="bi bi-box-arrow-right"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =================================================
+     MAIN AREA
+     ================================================= -->
+
+<div class="container-fluid">
+
+    <div class="row">
+
+
+        <!-- =================================================
+             SIDEBAR
+             ================================================= -->
+
+        <div class="col-md-2 sidebar p-3">
+
+
+            <h6 class="text-muted mb-3">
+
+                MAIN MENU
+
+            </h6>
+
+
+            <ul class="nav flex-column">
+
+
+                <!-- Dashboard -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="dashboard.html">
+
+                        <i class="bi bi-speedometer2 me-2"></i>
+
+                        Dashboard
+
+                    </a>
+
+                </li>
+
+
+                <!-- Enquiries -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="enquiry.html">
+
+                        <i class="bi bi-person-lines-fill me-2"></i>
+
+                        Enquiries
+
+                    </a>
+
+                </li>
+
+
+                <!-- Follow Ups -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link active"
+                            href="followup.html">
+
+                        <i class="bi bi-arrow-repeat me-2"></i>
+
+                        Follow Ups
+
+                    </a>
+
+                </li>
+
+
+                <!-- Day Book -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="daybook.html">
+
+                        <i class="bi bi-journal-text me-2"></i>
+
+                        Day Book
+
+                    </a>
+
+                </li>
+
+
+                <!-- Petty Cash -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="pettycash.html">
+
+                        <i class="bi bi-wallet2 me-2"></i>
+
+                        Petty Cash
+
+                    </a>
+
+                </li>
+
+
+                <!-- Vendor Payment -->
+
+                <li class="nav-item"
+                id="vendorPaymentMenu">
+
+                    <a
+                            class="nav-link"
+                            href="vendorpayment.html">
+
+                        <i class="bi bi-building me-2"></i>
+
+                        Vendor Payment
+
+                    </a>
+
+                </li>
+                employeePaymentMenu
+                <li class="nav-item"
+                    id="employeePaymentMenu">
+
+                    <a
+                            class="nav-link"
+                            href="employeepayment.html">
+
+                        <i class="bi bi-building me-2"></i>
+
+                        Employee Payment
+
+                    </a>
+
+                </li>
+
+
+                <!-- Flat Sales -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="flatsale.html">
+
+                        <i class="bi bi-house-check me-2"></i>
+
+                        Flat Sales
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CONTENT
+             ================================================= -->
+
+        <div class="col-md-10 p-4">
+
+
+            <!-- ================= PAGE HEADER ================= -->
+
+            <div class="mb-4">
+
+                <h2 class="page-title">
+
+                    Update Follow Up
+
+                </h2>
+
+                <p class="page-subtitle">
+
+                    Update customer follow-up status and next follow-up date.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FOLLOW UP CARD
+                 ================================================= -->
+
+            <div class="card followup-card shadow-sm">
+
+
+                <div class="card-body p-4">
+
+
+                    <!-- Card Header -->
+
+                    <div class="mb-3">
+
+                        <h5 class="mb-1">
+
+                            <i class="bi bi-arrow-repeat me-2"></i>
+
+                            Follow Up Details
+
+                        </h5>
+
+                        <small class="text-muted">
+
+                            Update the follow-up information.
+
+                        </small>
+
+                    </div>
+
+
+                    <hr>
+
+
+                    <!-- =================================================
+                         FORM
+                         ================================================= -->
+
+                    <form id="updateFollowUpForm">
+
+
+                        <div class="row g-3">
+
+
+                            <!-- ID -->
+
+                            <div class="col-md-4">
+
+                                <label class="form-label">
+
+                                    Follow Up ID
+
+                                </label>
+
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="followUpId"
+                                        readonly>
+
+                            </div>
+
+
+                            <!-- Enquiry ID -->
+
+                            <div class="col-md-4">
+
+                                <label class="form-label">
+
+                                    Enquiry ID
+
+                                </label>
+
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="enquiryId"
+                                        readonly>
+
+                            </div>
+
+
+                            <!-- Follow Up Type -->
+
+                            <div class="col-md-4">
+
+                                <label class="form-label">
+
+                                    Follow Up Type
+
+                                </label>
+
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="followUpType"
+                                        readonly>
+
+                            </div>
+
+
+                            <!-- Customer Name -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+
+                                    Customer Name
+
+                                </label>
+
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="customerName"
+                                        readonly>
+
+                            </div>
+
+
+                            <!-- Mobile -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+
+                                    Mobile
+
+                                </label>
+
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="mobile"
+                                        readonly>
+
+                            </div>
+
+
+                            <!-- Follow Up Date -->
+
+                            <div class="col-md-4">
+
+                                <label class="form-label">
+
+                                    Follow Up Date
+
+                                </label>
+
+                                <input
+                                        type="date"
+                                        class="form-control"
+                                        id="followUpDate"
+                                        readonly>
+
+                            </div>
+
+
+                            <!-- Status -->
+
+                            <div class="col-md-4">
+
+                                <label class="form-label">
+
+                                    Status
+
+                                </label>
+
+                                <select
+                                        class="form-select"
+                                        id="status"
+                                        required>
+
+                                    <option value="Pending">
+                                        Pending
+                                    </option>
+
+                                    <option value="Completed">
+                                        Completed
+                                    </option>
+
+                                    <option value="Interested">
+                                        Interested
+                                    </option>
+
+                                    <option value="Not Interested">
+                                        Not Interested
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- Next Follow Up -->
+
+                            <div class="col-md-4">
+
+                                <label class="form-label">
+
+                                    Next Follow Up
+
+                                </label>
+
+                                <input
+                                        type="date"
+                                        class="form-control"
+                                        id="nextFollowUp">
+
+                            </div>
+
+
+                        </div>
+
+
+                        <!-- =================================================
+                             BUTTONS
+                             ================================================= -->
+
+                        <div class="mt-4">
+
+
+                            <button
+                                    type="submit"
+                                    class="btn btn-update">
+
+                                <i class="bi bi-check-circle me-1"></i>
+
+                                Update Follow Up
+
+                            </button>
+
+
+                            <button
+                                    type="button"
+                                    class="btn btn-secondary btn-cancel ms-2"
+                                    onclick="goBack()">
+
+                                <i class="bi bi-arrow-left me-1"></i>
+
+                                Cancel
+
+                            </button>
+
+
+                        </div>
+
+
+                    </form>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =================================================
+     JAVASCRIPT
+     ================================================= -->
+
+<script>
+
+
+    // =================================================
+    // GET ID FROM URL
+    // =================================================
+
+    const urlParams =
+        new URLSearchParams(window.location.search);
+
+    const followUpId =
+        urlParams.get("id");
+
+
+
+    // =================================================
+    // LOAD FOLLOW UP
+    // =================================================
+
+    async function loadFollowUp() {
+
+        if (!followUpId) {
+
+            alert("Follow Up ID not found.");
+
+            window.location.href =
+                "followup.html";
+
+            return;
+
+        }
+
+
+        try {
+
+            const response = await fetch(
+                "/skyline/dashboard/followup/"
+                + followUpId
+            );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Failed to load follow up"
+                );
+
+            }
+
+
+            const followUp =
+                await response.json();
+
+
+            // Fill existing data
+
+            document.getElementById("followUpId").value =
+                followUp.id || "";
+
+
+            document.getElementById("enquiryId").value =
+                followUp.enquiryId || "";
+
+
+            document.getElementById("customerName").value =
+                followUp.customerName || "";
+
+
+            document.getElementById("mobile").value =
+                followUp.mobile || "";
+
+
+            document.getElementById("followUpType").value =
+                followUp.followUpType || "";
+
+
+            document.getElementById("followUpDate").value =
+                followUp.followUpDate || "";
+
+
+            document.getElementById("status").value =
+                followUp.status || "Pending";
+
+
+            document.getElementById("nextFollowUp").value =
+                followUp.nextFollowUp || "";
+
+        }
+
+        catch (error) {
+
+            console.error(error);
+
+            alert("Unable to load follow-up.");
+
+            window.location.href =
+                "followup.html";
+
+        }
+
+    }
+
+
+
+    // =================================================
+    // UPDATE FOLLOW UP
+    // =================================================
+
+    document
+        .getElementById("updateFollowUpForm")
+        .addEventListener(
+            "submit",
+            async function(event) {
+
+                event.preventDefault();
+
+
+                const followUp = {
+
+                    enquiryId:
+                    document.getElementById("enquiryId").value,
+
+                    customerName:
+                    document.getElementById("customerName").value,
+
+                    mobile:
+                    document.getElementById("mobile").value,
+
+                    followUpType:
+                    document.getElementById("followUpType").value,
+
+                    followUpDate:
+                    document.getElementById("followUpDate").value,
+
+                    status:
+                    document.getElementById("status").value,
+
+                    nextFollowUp:
+                    document.getElementById("nextFollowUp").value
+
+                };
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "/skyline/dashboard/followup/"
+                            + followUpId,
+                            {
+                                method: "PUT",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body:
+                                    JSON.stringify(followUp)
+                            }
+                        );
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "Failed to update follow up"
+                        );
+
+                    }
+
+
+                    alert(
+                        "Follow-up updated successfully!"
+                    );
+
+
+                    window.location.href =
+                        "followup.html";
+
+                }
+
+                catch (error) {
+
+                    console.error(error);
+
+                    alert(
+                        "Failed to update follow-up."
+                    );
+
+                }
+
+            }
+        );
+
+
+
+    // =================================================
+    // GO BACK
+    // =================================================
+
+    function goBack() {
+
+        window.location.href =
+            "followup.html";
+
+    }
+
+
+
+    // =================================================
+    // LOGOUT
+    // =================================================
+
+    function logout() {
+
+        const confirmLogout =
+            confirm(
+                "Are you sure you want to logout?"
+            );
+
+
+        if (confirmLogout) {
+
+            window.location.href =
+                "login.html";
+
+        }
+
+    }
+
+
+
+    // =================================================
+    // LOAD DATA WHEN PAGE OPENS
+    // =================================================
+
+    loadFollowUp();
+
+
+</script>
+<script src="role.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Skyline CRM - All Enquiries</title>
+
+
+    <!-- Bootstrap -->
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+
+    <!-- Bootstrap Icons -->
+
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- Your Dashboard CSS -->
+
+    <link
+            rel="stylesheet"
+            href="dashboard.css">
+
+
+    <style>
+
+        body {
+            background-color: #f5f7fb;
+        }
+
+
+        /* ==============================
+           MAIN CONTENT
+           ============================== */
+
+        .page-title {
+
+            font-weight: 700;
+            color: #1f2937;
+
+        }
+
+
+        .page-subtitle {
+
+            color: #6b7280;
+            font-size: 14px;
+
+        }
+
+
+        /* ==============================
+           TABLE CARD
+           ============================== */
+
+        .enquiry-card {
+
+            border: none;
+            border-radius: 12px;
+            background: white;
+
+        }
+
+
+        /* ==============================
+           CARD HEADER
+           ============================== */
+
+        .card-title {
+
+            font-size: 18px;
+            font-weight: 700;
+            color: #1f2937;
+
+        }
+
+
+        .card-subtitle {
+
+            font-size: 13px;
+            color: #6b7280;
+
+        }
+
+
+        /* ==============================
+           SEARCH BOX
+           ============================== */
+
+        .search-box {
+
+            width: 250px;
+
+        }
+
+
+        /* ==============================
+           TABLE
+           ============================== */
+
+        .table {
+
+            font-size: 13px;
+
+        }
+
+
+        .table thead th {
+
+            background-color: #f8f9fc;
+
+            color: #374151;
+
+            font-weight: 600;
+
+            white-space: nowrap;
+
+            border-bottom: 1px solid #dee2e6;
+
+        }
+
+
+        .table tbody td {
+
+            vertical-align: middle;
+
+            white-space: nowrap;
+
+        }
+
+
+        .table tbody tr:hover {
+
+            background-color: #f8f9ff;
+
+        }
+
+
+        /* ==============================
+           STATUS / BADGES
+           ============================== */
+
+        .badge-project {
+
+            background-color: #e8f0fe;
+            color: #2563eb;
+
+        }
+
+
+        .badge-flat {
+
+            background-color: #e8f7ee;
+            color: #198754;
+
+        }
+
+
+        .badge-source {
+
+            background-color: #fff3cd;
+            color: #997404;
+
+        }
+
+
+        /* ==============================
+           ACTION BUTTONS
+           ============================== */
+
+        .btn-edit {
+
+            color: #0d6efd;
+
+            border: 1px solid #0d6efd;
+
+            background: white;
+
+        }
+
+
+        .btn-edit:hover {
+
+            background-color: #0d6efd;
+
+            color: white;
+
+        }
+
+
+        .btn-delete {
+
+            color: #dc3545;
+
+            border: 1px solid #dc3545;
+
+            background: white;
+
+        }
+
+
+        .btn-delete:hover {
+
+            background-color: #dc3545;
+
+            color: white;
+
+        }
+
+
+        /* ==============================
+           BACK BUTTON
+           ============================== */
+
+        .back-btn {
+
+            font-size: 13px;
+
+            color: #4f46e5;
+
+            text-decoration: none;
+
+        }
+
+
+        .back-btn:hover {
+
+            color: #3730a3;
+
+        }
+
+
+        /* ==============================
+           LOADING
+           ============================== */
+
+        #loading {
+
+            text-align: center;
+
+            padding: 30px;
+
+            color: #6b7280;
+
+        }
+
+
+        /* ==============================
+           EMPTY MESSAGE
+           ============================== */
+
+        #noData {
+
+            text-align: center;
+
+            padding: 30px;
+
+            color: #6b7280;
+
+            display: none;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+     ===================================================== -->
+
+<nav class="navbar navbar-dark">
+
+    <div class="container-fluid">
+
+
+        <!-- Logo -->
+
+        <a class="navbar-brand"
+           href="dashboard.html">
+
+            <i class="bi bi-buildings"></i>
+
+            SKYLINE CRM
+
+        </a>
+
+
+        <!-- Admin -->
+
+        <div class="text-white">
+
+            <span class="me-3">
+
+                <i class="bi bi-person-circle"></i>
+
+                <span id="loggedInUser">User</span>
+
+            </span>
+
+
+            <button
+                    class="btn btn-outline-light btn-sm"
+                    onclick="logout()">
+
+                <i class="bi bi-box-arrow-right"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     MAIN AREA
+     ===================================================== -->
+
+<div class="container-fluid">
+
+    <div class="row">
+
+
+        <!-- =================================================
+             SIDEBAR
+             ================================================= -->
+
+        <div class="col-md-2 sidebar p-3">
+
+
+            <h6 class="text-muted mb-3">
+
+                MAIN MENU
+
+            </h6>
+
+
+            <ul class="nav flex-column">
+
+
+                <!-- Dashboard -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="dashboard.html">
+
+                        <i class="bi bi-speedometer2 me-2"></i>
+
+                        Dashboard
+
+                    </a>
+
+                </li>
+
+
+                <!-- All Enquiry -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link active"
+                            href="allenquiry.html">
+
+                        <i class="bi bi-person-lines-fill me-2"></i>
+
+                        All Enquiry
+
+                    </a>
+
+                </li>
+
+
+                <!-- Follow Up -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="followUp.html">
+
+                        <i class="bi bi-arrow-repeat me-2"></i>
+
+                        Follow Up
+
+                    </a>
+
+                </li>
+
+
+                <!-- Lead -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="Lead.html">
+
+                        <i class="bi bi-people me-2"></i>
+
+                        Lead
+
+                    </a>
+
+                </li>
+
+
+                <!-- Day Book -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="daybook.html">
+
+                        <i class="bi bi-journal-text me-2"></i>
+
+                        Day Book
+
+                    </a>
+
+                </li>
+
+
+                <!-- Petty Cash -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="pettycash.html">
+
+                        <i class="bi bi-wallet2 me-2"></i>
+
+                        Petty Cash Entry
+
+                    </a>
+
+                </li>
+
+
+                <!-- Vendor Payment -->
+
+                <li class="nav-item"
+                    id="vendorPaymentMenu">
+
+                    <a
+                            class="nav-link"
+                            href="vendorpayment.html">
+
+                        <i class="bi bi-building me-2"></i>
+
+                        Vendor Payment Entry
+
+                    </a>
+
+                </li>
+
+
+                <!-- Employee Payment -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="employeepayment.html"
+                    id="employeePaymentMenu">
+
+                        <i class="bi bi-person-check me-2"></i>
+
+                        Employee Payment Entry
+
+                    </a>
+
+                </li>
+
+
+                <!-- Flat Sale -->
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="flatsale.html">
+
+                        <i class="bi bi-house-check me-2"></i>
+
+                        Flat Sale Entry
+
+                    </a>
+
+                </li>
+
+
+
+
+
+
+            </ul>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CONTENT
+             ================================================= -->
+
+        <div class="col-md-10 p-4">
+
+
+            <!-- ===============================
+                 PAGE HEADING
+                 =============================== -->
+
+            <div class="mb-4">
+
+
+                <a
+                        href="dashboard.html"
+                        class="back-btn">
+
+                    <i class="bi bi-arrow-left"></i>
+
+                    Back to Dashboard
+
+                </a>
+
+
+                <h2 class="page-title mt-2">
+
+                    All Enquiries
+
+                </h2>
+
+
+                <p class="page-subtitle">
+
+                    View and manage all customer enquiries.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TABLE CARD
+                 ================================================= -->
+
+            <div class="card enquiry-card shadow-sm">
+
+
+                <div class="card-body p-4">
+
+
+                    <!-- ===============================
+                         CARD HEADER
+                         =============================== -->
+
+                    <div class="d-flex justify-content-between
+                                align-items-center mb-3">
+
+
+                        <div>
+
+                            <div class="card-title">
+
+                                <i class="bi bi-person-lines-fill me-2"></i>
+
+                                Enquiry List
+
+                            </div>
+
+
+                            <div class="card-subtitle">
+
+                                All enquiries stored in the system
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Add Enquiry -->
+
+                        <a
+                                href="enquiry.html"
+                                class="btn btn-primary">
+
+                            <i class="bi bi-plus-circle me-1"></i>
+
+                            Add Enquiry
+
+                        </a>
+
+                    </div>
+
+
+
+                    <!-- ===============================
+                         SEARCH
+                         =============================== -->
+
+                    <div class="d-flex justify-content-end mb-3">
+
+
+                        <div class="input-group search-box">
+
+                            <span class="input-group-text">
+
+                                <i class="bi bi-search"></i>
+
+                            </span>
+
+
+                            <input
+                                    type="text"
+                                    id="searchInput"
+                                    class="form-control"
+                                    placeholder="Search enquiry..."
+                                    onkeyup="searchEnquiry()">
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ===============================
+                         TABLE
+                         =============================== -->
+
+                    <div class="table-responsive">
+
+
+                        <table
+                                class="table table-hover align-middle"
+                                id="enquiryTable">
+
+
+                            <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Enquiry Date</th>
+
+                                <th>Enquiry No.</th>
+
+                                <th>Customer Name</th>
+
+                                <th>Mobile</th>
+
+                                <th>Project</th>
+
+                                <th>Flat Type</th>
+
+                                <th>Budget</th>
+
+                                <th>Source</th>
+
+                                <th>Preferred Location</th>
+
+                                <th>Bedrooms</th>
+
+                                <th>Purpose</th>
+
+                                <th>Enquiry Type</th>
+
+                                <th>Action</th>
+
+                            </tr>
+
+                            </thead>
+
+
+                            <tbody id="enquiryTableBody">
+
+                            </tbody>
+
+
+                        </table>
+
+                    </div>
+
+
+
+                    <!-- Loading -->
+
+                    <div id="loading">
+
+                        <i class="bi bi-arrow-repeat"></i>
+
+                        Loading enquiries...
+
+                    </div>
+
+
+                    <!-- No data -->
+
+                    <div id="noData">
+
+                        <i class="bi bi-inbox fs-3"></i>
+
+                        <br>
+
+                        No enquiries found.
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script>
+
+
+    // ==========================================
+    // LOAD ALL ENQUIRIES
+    // ==========================================
+
+    async function loadEnquiries() {
+
+
+        try {
+
+
+            const response = await fetch(
+                "/skyline/dashboard/enquiry"
+            );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Failed to load enquiries"
+                );
+
+            }
+
+
+            const enquiries = await response.json();
+
+
+            console.log("Enquiries:", enquiries);
+
+
+            displayEnquiries(enquiries);
+
+
+        }
+
+
+        catch (error) {
+
+
+            console.error(error);
+
+
+            document.getElementById("loading").innerHTML = `
+
+                <div class="alert alert-danger">
+
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+
+                    Unable to load enquiries.
+
+                </div>
+
+            `;
+
+        }
+
+    }
+
+
+
+    // ==========================================
+    // DISPLAY ENQUIRIES
+    // ==========================================
+
+    function displayEnquiries(enquiries) {
+
+
+        const tableBody =
+            document.getElementById(
+                "enquiryTableBody"
+            );
+
+
+        const loading =
+            document.getElementById("loading");
+
+
+        const noData =
+            document.getElementById("noData");
+
+
+        // Clear old data
+
+        tableBody.innerHTML = "";
+
+
+        // Hide loading
+
+        loading.style.display = "none";
+
+
+        // No enquiries
+
+        if (enquiries.length === 0) {
+
+            noData.style.display = "block";
+
+            return;
+
+        }
+
+
+        noData.style.display = "none";
+
+
+        // Create rows
+
+        enquiries.forEach(function(enquiry) {
+
+
+            const row = document.createElement("tr");
+
+
+            row.innerHTML = `
+
+                <td>${enquiry.id ?? ""}</td>
+
+                <td>${enquiry.enquiryDate ?? ""}</td>
+
+                <td>${enquiry.enquiryNo ?? ""}</td>
+
+                <td>
+                    <strong>
+                        ${enquiry.customerName ?? ""}
+                    </strong>
+                </td>
+
+                <td>${enquiry.mobile ?? ""}</td>
+
+                <td>
+
+                    <span class="badge badge-project">
+
+                        ${enquiry.project ?? ""}
+
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <span class="badge badge-flat">
+
+                        ${enquiry.flatType ?? ""}
+
+                    </span>
+
+                </td>
+
+                <td>
+
+                    ₹ ${enquiry.budget ?? ""}
+
+                </td>
+
+                <td>
+
+                    <span class="badge badge-source">
+
+                        ${enquiry.source ?? ""}
+
+                    </span>
+
+                </td>
+
+                <td>${enquiry.preferredLocation ?? ""}</td>
+
+                <td>${enquiry.bedrooms ?? ""}</td>
+
+                <td>${enquiry.purpose ?? ""}</td>
+
+                <td>${enquiry.enquiryType ?? ""}</td>
+
+                <td>
+
+                    <button
+                        class="btn btn-sm btn-edit me-1"
+                        onclick="editEnquiry(${enquiry.id})">
+
+                        <i class="bi bi-pencil"></i>
+
+                    </button>
+
+
+                    <button
+                        class="btn btn-sm btn-delete"
+                        onclick="deleteEnquiry(${enquiry.id})">
+
+                        <i class="bi bi-trash"></i>
+
+                    </button>
+
+                </td>
+
+            `;
+
+
+            tableBody.appendChild(row);
+
+        });
+
+    }
+
+
+
+    // ==========================================
+    // SEARCH ENQUIRY
+    // ==========================================
+
+    function searchEnquiry() {
+
+
+        const search =
+            document
+                .getElementById("searchInput")
+                .value
+                .toLowerCase();
+
+
+        const rows =
+            document.querySelectorAll(
+                "#enquiryTableBody tr"
+            );
+
+
+        rows.forEach(function(row) {
+
+
+            const text =
+                row.innerText.toLowerCase();
+
+
+            if (text.includes(search)) {
+
+                row.style.display = "";
+
+            }
+
+            else {
+
+                row.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+
+    // ==========================================
+    // EDIT ENQUIRY
+    // ==========================================
+
+    function editEnquiry(id) {
+
+        // Send enquiry ID to enquiry page
+        window.location.href = "enquiry.html?id=" + id;
+    }
+
+
+
+    // ==========================================
+    // DELETE ENQUIRY
+    // ==========================================
+
+    async function deleteEnquiry(id) {
+
+
+        const confirmDelete =
+            confirm(
+                "Are you sure you want to delete this enquiry?"
+            );
+
+
+        if (!confirmDelete) {
+
+            return;
+
+        }
+
+
+        try {
+
+
+            const response =
+                await fetch(
+                    "/skyline/dashboard/enquiry/" + id,
+                    {
+                        method: "DELETE"
+                    }
+                );
+
+
+            if (response.ok) {
+
+
+                alert(
+                    "Enquiry deleted successfully!"
+                );
+
+
+                // Reload table
+
+                loadEnquiries();
+
+            }
+
+            else {
+
+                alert(
+                    "Failed to delete enquiry."
+                );
+
+            }
+
+        }
+
+
+        catch (error) {
+
+
+            console.error(error);
+
+
+            alert(
+                "Server connection failed."
+            );
+
+        }
+
+    }
+
+
+
+    // ==========================================
+    // LOGOUT
+    // ==========================================
+
+    function logout() {
+
+
+        const confirmLogout =
+            confirm(
+                "Are you sure you want to logout?"
+            );
+
+
+        if (confirmLogout) {
+
+            window.location.href =
+                "login.html";
+
+        }
+
+    }
+
+
+
+    // ==========================================
+    // RUN WHEN PAGE OPENS
+    // ==========================================
+
+    loadEnquiries();
+
+
+</script>
+<script src="role.js"></script>
+
+</body>
+
+</html>

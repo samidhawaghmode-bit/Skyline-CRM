@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Skyline CRM - Login</title>
+
+    <link rel="stylesheet" href="login.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<div class="login-page">
+
+
+    <div class="left-section">
+
+        <div class="overlay"></div>
+
+        <div class="brand-content">
+
+            <div class="logo">
+                S
+            </div>
+
+            <h1>SKYLINE</h1>
+
+            <p class="tagline">
+                Real Estate CRM
+            </p>
+
+            <div class="line"></div>
+
+            <p class="description">
+                Manage your enquiries, leads, follow-ups,
+                sales and business operations from one powerful platform.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Right Side -->
+    <div class="right-section">
+
+        <div class="login-container">
+
+            <div class="mobile-logo">
+                S
+            </div>
+
+            <h2>Welcome Back</h2>
+
+            <p class="welcome-text">
+                Login to your Skyline CRM account
+            </p>
+
+
+            <!-- Login Form -->
+            <form id="loginForm">
+
+                <!-- Username -->
+                <div class="input-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            👤
+                        </span>
+
+                        <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                placeholder="Enter your username"
+                                required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Password -->
+                <div class="input-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            🔒
+                        </span>
+
+                        <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                required
+                        >
+
+                        <button
+                                type="button"
+                                class="show-password"
+                                onclick="togglePassword()">
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Remember -->
+                <div class="options">
+
+                    <label class="remember">
+
+                        <input
+                                type="checkbox"
+                                id="rememberMe">
+
+                        <span>Remember me</span>
+
+                    </label>
+
+                    <a href="#" onclick="forgotPassword()">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+
+                <!-- Error / Success message -->
+                <div id="message"></div>
+
+
+                <!-- Login Button -->
+                <button
+                        type="submit"
+                        class="login-btn"
+                        id="loginButton">
+
+                    <span id="buttonText">
+                        Login to Dashboard
+                    </span>
+
+                </button>
+
+            </form>
+
+
+            <div class="security-text">
+
+                <span>🔐</span>
+
+                <span>
+                    Secure access to Skyline CRM
+                </span>
+
+            </div>
+
+
+            <!-- Registration -->
+            <div>
+                <a href="registration.html">
+                    Register
+                </a>
+            </div>
+
+
+            <div class="footer">
+                © 2026 Skyline CRM. All rights reserved.
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+    document.getElementById("loginForm")
+        .addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+
+            const username =
+                document.getElementById("username").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+            const message =
+                document.getElementById("message");
+
+            const loginButton =
+                document.getElementById("loginButton");
+
+            const buttonText =
+                document.getElementById("buttonText");
+
+
+            // Clear old message
+            message.innerHTML = "";
+
+
+            // Disable login button
+            loginButton.disabled = true;
+
+            buttonText.innerHTML = "Logging in...";
+
+
+            try {
+
+                const response = await fetch("/skyline/login", {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        username: username,
+                        password: password
+
+                    })
+
+                });
+
+
+                const result = await response.json();
+
+
+
+
+                // Login successful
+                if (result.success === true) {
+
+                    message.innerHTML =
+                        '<div class="success-message">' +
+                        '✓ Login successful. Redirecting...' +
+                        '</div>';
+
+
+                    if (result.role === "ADMIN") {
+
+                        // Save logged-in user's role
+                        localStorage.setItem("userRole", "ADMIN");
+
+                        // Save username
+                        localStorage.setItem("username", username);
+
+                        setTimeout(function() {
+
+                            window.location.href =
+                                "/dashboard.html";
+
+                        }, 800);
+
+                    }
+
+
+                    else if (result.role === "EMPLOYEE") {
+
+                        // Save logged-in user's role
+                        localStorage.setItem("userRole", "EMPLOYEE");
+
+                        // Save username
+                        localStorage.setItem("username", username);
+
+                        setTimeout(function() {
+
+                            window.location.href =
+                                "/emp-dashboard.html";
+
+                        }, 800);
+
+                    }
+
+
+                    /*
+                     * Unknown role
+                     */
+
+                    else {
+
+                        message.innerHTML =
+                            '<div class="error-message">' +
+                            '✕ Invalid user role' +
+                            '</div>';
+
+                        loginButton.disabled = false;
+
+                        buttonText.innerHTML =
+                            "Login to Dashboard";
+                    }
+
+                }
+
+
+                /*
+                 * LOGIN FAILED
+                 */
+
+                else {
+
+                    message.innerHTML =
+                        '<div class="error-message">' +
+                        '✕ Invalid username or password' +
+                        '</div>';
+
+                    loginButton.disabled = false;
+
+                    buttonText.innerHTML =
+                        "Login to Dashboard";
+                }
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                message.innerHTML =
+                    '<div class="error-message">' +
+                    '✕ Unable to connect to server' +
+                    '</div>';
+
+                loginButton.disabled = false;
+
+                buttonText.innerHTML =
+                    "Login to Dashboard";
+            }
+
+        });
+
+
+
+    /*
+     * Show / Hide Password
+     */
+
+    function togglePassword() {
+
+        const password =
+            document.getElementById("password");
+
+        const button =
+            document.querySelector(".show-password");
+
+
+        if (password.type === "password") {
+
+            password.type = "text";
+
+            button.innerHTML = "🙈";
+
+        } else {
+
+            password.type = "password";
+
+            button.innerHTML = "👁";
+        }
+    }
+
+
+
+    /*
+     * Forgot Password
+     */
+
+    function forgotPassword() {
+
+        alert(
+            "Please contact the CRM administrator to reset your password."
+        );
+
+    }
+
+</script>
+
+</body>
+
+</html>

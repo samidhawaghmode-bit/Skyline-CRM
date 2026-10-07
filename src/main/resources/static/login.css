@@ -1,0 +1,660 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    font-family: "Inter", sans-serif;
+
+    min-height: 100vh;
+
+    background: #f5f7fb;
+
+}
+
+
+
+.login-page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+}
+
+
+
+.left-section {
+
+    width: 55%;
+
+    min-height: 100vh;
+
+    position: relative;
+
+    background-image:
+            url("https://img.magnific.com/free-photo/observation-urban-building-business-steel_1127-2397.jpg?semt=ais_hybrid&w=740&q=80 ");
+
+    background-size: cover;
+
+    background-position: center;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 70px;
+
+    overflow: hidden;
+}
+
+
+/* Dark overlay */
+
+.overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+            linear-gradient(
+                    135deg,
+                    rgba(8, 20, 40, 0.90),
+                    rgba(12, 40, 70, 0.65),
+                    rgba(0, 0, 0, 0.45)
+            );
+
+}
+
+
+
+.brand-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    color: white;
+
+    max-width: 520px;
+
+}
+
+
+.logo,
+.mobile-logo {
+
+    width: 58px;
+
+    height: 58px;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 28px;
+
+    font-weight: 800;
+
+    color: white;
+
+    background:
+            linear-gradient(
+                    135deg,
+                    #2f80ed,
+                    #56ccf2
+            );
+
+    box-shadow:
+            0 10px 30px rgba(47, 128, 237, 0.35);
+
+}
+
+
+.brand-content h1 {
+
+    margin-top: 25px;
+
+    font-size: 52px;
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+
+}
+
+
+.tagline {
+
+    margin-top: 8px;
+
+    font-size: 18px;
+
+    font-weight: 500;
+
+    color: #dbeafe;
+
+    letter-spacing: 1px;
+
+}
+
+
+.line {
+
+    width: 75px;
+
+    height: 4px;
+
+    background: #56ccf2;
+
+    border-radius: 5px;
+
+    margin: 30px 0;
+
+}
+
+
+.description {
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    color: #e5e7eb;
+
+    max-width: 470px;
+
+}
+
+
+/* ==================================
+   RIGHT SECTION
+   ================================== */
+
+.right-section {
+
+    width: 45%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #ffffff;
+
+    padding: 40px;
+
+}
+
+
+.login-container {
+
+    width: 100%;
+
+    max-width: 440px;
+
+}
+
+
+/* Mobile logo hidden */
+
+.mobile-logo {
+
+    display: none;
+
+}
+
+
+.login-container h2 {
+
+    font-size: 34px;
+
+    font-weight: 800;
+
+    color: #111827;
+
+    margin-bottom: 10px;
+
+}
+
+
+.welcome-text {
+
+    color: #6b7280;
+
+    font-size: 15px;
+
+    margin-bottom: 35px;
+
+}
+
+
+/* ==================================
+   INPUT
+   ================================== */
+
+.input-group {
+
+    margin-bottom: 22px;
+
+}
+
+
+.input-group label {
+
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #374151;
+
+    margin-bottom: 8px;
+
+}
+
+
+.input-wrapper {
+
+    position: relative;
+
+}
+
+
+.input-icon {
+
+    position: absolute;
+
+    left: 15px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-size: 17px;
+
+    opacity: 0.7;
+
+}
+
+
+.input-wrapper input {
+
+    width: 100%;
+
+    height: 52px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 10px;
+
+    padding: 0 45px;
+
+    font-size: 14px;
+
+    font-family: inherit;
+
+    outline: none;
+
+    transition: 0.25s;
+
+    background: #f9fafb;
+
+}
+
+
+.input-wrapper input:focus {
+
+    border-color: #2f80ed;
+
+    background: white;
+
+    box-shadow:
+            0 0 0 4px rgba(47, 128, 237, 0.10);
+
+}
+
+
+.input-wrapper input::placeholder {
+
+    color: #9ca3af;
+
+}
+
+
+/* Password button */
+
+.show-password {
+
+    position: absolute;
+
+    right: 14px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+}
+
+
+/* ==================================
+   OPTIONS
+   ================================== */
+
+.options {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin: 5px 0 22px;
+
+    font-size: 13px;
+
+}
+
+
+.remember {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #6b7280;
+
+}
+
+
+.remember input {
+
+    accent-color: #2f80ed;
+
+}
+
+
+.options a {
+
+    color: #2f80ed;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+}
+
+
+.options a:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* ==================================
+   LOGIN BUTTON
+   ================================== */
+
+.login-btn {
+
+    width: 100%;
+
+    height: 54px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+            linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #1d4ed8
+            );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+
+    box-shadow:
+            0 8px 20px rgba(37, 99, 235, 0.25);
+
+}
+
+
+.login-btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+            0 12px 25px rgba(37, 99, 235, 0.35);
+
+}
+
+
+.login-btn:active {
+
+    transform: translateY(0);
+
+}
+
+
+.login-btn:disabled {
+
+    opacity: 0.7;
+
+    cursor: not-allowed;
+
+}
+
+
+/* ==================================
+   MESSAGE
+   ================================== */
+
+#message {
+
+    margin-bottom: 15px;
+
+}
+
+
+.error-message {
+
+    padding: 12px 14px;
+
+    border-radius: 8px;
+
+    background: #fef2f2;
+
+    border: 1px solid #fecaca;
+
+    color: #dc2626;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+}
+
+
+.success-message {
+
+    padding: 12px 14px;
+
+    border-radius: 8px;
+
+    background: #f0fdf4;
+
+    border: 1px solid #bbf7d0;
+
+    color: #16a34a;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+}
+
+
+/* ==================================
+   SECURITY
+   ================================== */
+
+.security-text {
+
+    margin-top: 28px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+
+}
+
+
+/* ==================================
+   FOOTER
+   ================================== */
+
+.footer {
+
+    margin-top: 25px;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    color: #9ca3af;
+
+}
+
+
+/* ==================================
+   RESPONSIVE
+   ================================== */
+
+@media (max-width: 900px) {
+
+    .left-section {
+
+        width: 45%;
+
+        padding: 40px;
+
+    }
+
+    .right-section {
+
+        width: 55%;
+
+        padding: 30px;
+
+    }
+
+    .brand-content h1 {
+
+        font-size: 40px;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .login-page {
+
+        display: block;
+
+    }
+
+
+    .left-section {
+
+        display: none;
+
+    }
+
+
+    .right-section {
+
+        width: 100%;
+
+        min-height: 100vh;
+
+        padding: 30px 20px;
+
+    }
+
+
+    .login-container {
+
+        max-width: 420px;
+
+    }
+
+
+    .mobile-logo {
+
+        display: flex;
+
+        margin: 0 auto 25px;
+
+    }
+
+
+    .login-container h2 {
+
+        text-align: center;
+
+        font-size: 28px;
+
+    }
+
+
+    .welcome-text {
+
+        text-align: center;
+
+    }
+
+}

@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0">
+
+    <title>Update Vendor Payment - Skyline CRM</title>
+
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+            rel="stylesheet">
+
+
+    <link rel="stylesheet" href="dashboard.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-dark">
+
+    <div class="container-fluid">
+
+        <span class="navbar-brand mb-0 h1">
+            SKYLINE CRM
+        </span>
+
+
+        <div class="text-white">
+
+            <i class="bi bi-person-circle"></i>
+            Admin
+
+            <button
+                    class="btn btn-outline-light btn-sm ms-3"
+                    onclick="logout()">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= MAIN LAYOUT ================= -->
+
+<div class="container-fluid">
+
+    <div class="row">
+
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <div class="col-md-2 sidebar p-3">
+
+            <h6 class="mb-3">
+                MENU
+            </h6>
+
+
+            <a
+                    href="dashboard.html"
+                    class="nav-link">
+
+                <i class="bi bi-speedometer2 me-2"></i>
+                Dashboard
+
+            </a>
+
+
+            <a
+                    href="allenquiry.html"
+                    class="nav-link">
+
+                <i class="bi bi-person-lines-fill me-2"></i>
+                Enquiries
+
+            </a>
+
+
+            <a
+                    href="followup.html"
+                    class="nav-link">
+
+                <i class="bi bi-telephone me-2"></i>
+                Follow Up
+
+            </a>
+
+
+            <a
+                    href="lead.html"
+                    class="nav-link">
+
+                <i class="bi bi-people me-2"></i>
+                Lead
+
+            </a>
+
+
+            <a
+                    href="daybook.html"
+                    class="nav-link">
+
+                <i class="bi bi-book me-2"></i>
+                Day Book
+
+            </a>
+
+
+            <a
+                    href="pettycash.html"
+                    class="nav-link">
+
+                <i class="bi bi-cash-stack me-2"></i>
+                Petty Cash
+
+            </a>
+
+
+            <!-- ACTIVE -->
+
+            <a
+                    href="vendorpayment.html"
+                    class="nav-link active"
+            id="vendorPaymentMenu">
+
+                <i class="bi bi-credit-card me-2"></i>
+                Vendor Payment
+
+            </a>
+
+
+            <a
+                    href="employeepayment..html"
+                    class="nav-link active"
+                    id="employeePaymentMenu">
+
+                <i class="bi bi-credit-card me-2"></i>
+                Employee Payment
+
+            </a>
+
+            <a
+                    href="flatsale.html"
+                    class="nav-link">
+
+                <i class="bi bi-house me-2"></i>
+                Flat Sales
+
+            </a>
+
+        </div>
+
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <div class="col-md-10 p-4">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="mb-4">
+
+                <h4 class="dashboard-title mb-1">
+                    Update Vendor Payment
+                </h4>
+
+                <small class="text-muted">
+                    Update vendor payment details
+                </small>
+
+            </div>
+
+
+
+            <!-- ================= FORM CARD ================= -->
+
+            <div class="card dashboard-card shadow-sm">
+
+                <div class="card-body">
+
+
+                    <form id="vendorPaymentForm">
+
+
+                        <div class="row g-3">
+
+
+                            <!-- Payment ID -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Payment ID
+                                </label>
+
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="paymentId"
+                                        readonly>
+
+                            </div>
+
+
+
+                            <!-- Payment Date -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Payment Date
+                                </label>
+
+                                <input
+                                        type="date"
+                                        class="form-control"
+                                        id="paymentDate"
+                                        required>
+
+                            </div>
+
+
+
+                            <!-- Vendor Name -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Vendor Name
+                                </label>
+
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="vendorName"
+                                        required>
+
+                            </div>
+
+
+
+                            <!-- Vendor Type -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Vendor Type
+                                </label>
+
+                                <select
+                                        class="form-select"
+                                        id="vendorType"
+                                        required>
+
+                                    <option value="Contractor">
+                                        Contractor
+                                    </option>
+
+                                    <option value="Supplier">
+                                        Supplier
+                                    </option>
+
+                                    <option value="Broker">
+                                        Broker
+                                    </option>
+
+                                    <option value="Service Provider">
+                                        Service Provider
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- Project -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Project
+                                </label>
+
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="project">
+
+                            </div>
+
+
+
+                            <!-- Particulars -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Particulars
+                                </label>
+
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="particulars"
+                                        required>
+
+                            </div>
+
+
+
+                            <!-- Amount -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Amount
+                                </label>
+
+                                <input
+                                        type="number"
+                                        class="form-control"
+                                        id="amount"
+                                        min="0"
+                                        step="0.01"
+                                        required>
+
+                            </div>
+
+
+
+                            <!-- Payment Mode -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Payment Mode
+                                </label>
+
+                                <select
+                                        class="form-select"
+                                        id="paymentMode"
+                                        required>
+
+                                    <option value="Cash">
+                                        Cash
+                                    </option>
+
+                                    <option value="UPI">
+                                        UPI
+                                    </option>
+
+                                    <option value="Bank Transfer">
+                                        Bank Transfer
+                                    </option>
+
+                                    <option value="Cheque">
+                                        Cheque
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- Payment Status -->
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Payment Status
+                                </label>
+
+                                <select
+                                        class="form-select"
+                                        id="paymentStatus"
+                                        required>
+
+                                    <option value="Paid">
+                                        Paid
+                                    </option>
+
+                                    <option value="Pending">
+                                        Pending
+                                    </option>
+
+                                    <option value="Cancelled">
+                                        Cancelled
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- Remarks -->
+
+                            <div class="col-md-12">
+
+                                <label class="form-label">
+                                    Remarks
+                                </label>
+
+                                <textarea
+                                        class="form-control"
+                                        id="remarks"
+                                        rows="3"
+                                        placeholder="Enter remarks"></textarea>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- BUTTONS -->
+
+                        <div class="mt-4">
+
+                            <button
+                                    type="submit"
+                                    class="btn btn-primary">
+
+                                <i class="bi bi-check-circle me-1"></i>
+                                Update Payment
+
+                            </button>
+
+
+                            <button
+                                    type="button"
+                                    class="btn btn-secondary ms-2"
+                                    onclick="goBack()">
+
+                                <i class="bi bi-arrow-left me-1"></i>
+                                Back
+
+                            </button>
+
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    const API_URL =
+        "/skyline/dashboard/vendorpayment";
+
+
+    const urlParams =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const paymentId =
+        urlParams.get("id");
+
+
+
+    window.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            if (!paymentId) {
+
+                alert(
+                    "Vendor Payment ID not found."
+                );
+
+
+                window.location.href =
+                    "vendorpayment.html";
+
+
+                return;
+
+            }
+
+
+            loadVendorPayment(paymentId);
+
+        }
+    );
+
+
+
+    async function loadVendorPayment(id) {
+
+        try {
+
+            const response =
+                await fetch(
+                    API_URL + "/" + id
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Vendor payment not found"
+                );
+
+            }
+
+
+            const payment =
+                await response.json();
+
+
+            document.getElementById(
+                "paymentId"
+            ).value =
+                payment.id || "";
+
+
+            document.getElementById(
+                "paymentDate"
+            ).value =
+                payment.paymentDate || "";
+
+
+            document.getElementById(
+                "vendorName"
+            ).value =
+                payment.vendorName || "";
+
+
+            document.getElementById(
+                "vendorType"
+            ).value =
+                payment.vendorType || "";
+
+
+            document.getElementById(
+                "project"
+            ).value =
+                payment.project || "";
+
+
+            document.getElementById(
+                "particulars"
+            ).value =
+                payment.particulars || "";
+
+
+            document.getElementById(
+                "amount"
+            ).value =
+                payment.amount || "";
+
+
+            document.getElementById(
+                "paymentMode"
+            ).value =
+                payment.paymentMode || "";
+
+
+            document.getElementById(
+                "paymentStatus"
+            ).value =
+                payment.paymentStatus || "";
+
+
+            document.getElementById(
+                "remarks"
+            ).value =
+                payment.remarks || "";
+
+        }
+        catch (error) {
+
+            console.error(error);
+
+            alert(
+                "Failed to load vendor payment."
+            );
+
+        }
+
+    }
+
+
+
+    document.getElementById(
+        "vendorPaymentForm"
+    )
+        .addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
+
+
+                const vendorPayment = {
+
+                    paymentDate:
+                    document.getElementById(
+                        "paymentDate"
+                    ).value,
+
+                    vendorName:
+                    document.getElementById(
+                        "vendorName"
+                    ).value,
+
+                    vendorType:
+                    document.getElementById(
+                        "vendorType"
+                    ).value,
+
+                    project:
+                    document.getElementById(
+                        "project"
+                    ).value,
+
+                    particulars:
+                    document.getElementById(
+                        "particulars"
+                    ).value,
+
+                    amount:
+                    document.getElementById(
+                        "amount"
+                    ).value,
+
+                    paymentMode:
+                    document.getElementById(
+                        "paymentMode"
+                    ).value,
+
+                    paymentStatus:
+                    document.getElementById(
+                        "paymentStatus"
+                    ).value,
+
+                    remarks:
+                    document.getElementById(
+                        "remarks"
+                    ).value
+
+                };
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            API_URL + "/" + paymentId,
+                            {
+                                method: "PUT",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body:
+                                    JSON.stringify(
+                                        vendorPayment
+                                    )
+                            }
+                        );
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "Update failed"
+                        );
+
+                    }
+
+
+                    alert(
+                        "Vendor Payment updated successfully!"
+                    );
+
+
+                    window.location.href =
+                        "vendorpayment.html";
+
+                }
+                catch (error) {
+
+                    console.error(error);
+
+                    alert(
+                        "Failed to update vendor payment."
+                    );
+
+                }
+
+            }
+        );
+
+
+
+    function goBack() {
+
+        window.location.href =
+            "vendorpayment.html";
+
+    }
+
+
+
+    function logout() {
+
+        const confirmLogout =
+            confirm(
+                "Are you sure you want to logout?"
+            );
+
+
+        if (confirmLogout) {
+
+            window.location.href =
+                "/login.html";
+
+        }
+
+    }
+
+</script>
+<script src="role.js"></script>
+
+
+</body>
+
+</html>
+

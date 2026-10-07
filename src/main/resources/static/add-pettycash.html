@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Skyline CRM - Add Petty Cash</title>
+
+
+    <!-- Bootstrap -->
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+
+    <!-- Bootstrap Icons -->
+
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- Dashboard CSS -->
+
+    <link
+            rel="stylesheet"
+            href="dashboard.css">
+
+
+    <style>
+
+        .page-title {
+            font-weight: 600;
+        }
+
+        .form-card {
+            border: 0;
+            border-radius: 8px;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-dark">
+
+    <div class="container-fluid">
+
+        <a class="navbar-brand" href="dashboard.html">
+
+            <i class="bi bi-buildings"></i>
+
+            SKYLINE CRM
+
+        </a>
+
+
+        <div class="text-white">
+
+            <span class="me-3">
+
+                <i class="bi bi-person-circle"></i>
+
+                <span id="loggedInUser">User</span>
+
+            </span>
+
+
+            <button
+                    class="btn btn-outline-light btn-sm"
+                    onclick="logout()">
+
+                <i class="bi bi-box-arrow-right"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="container-fluid">
+
+    <div class="row">
+
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <div class="col-md-2 sidebar p-3">
+
+            <h6 class="text-muted mb-3">
+
+                MAIN MENU
+
+            </h6>
+
+
+            <ul class="nav flex-column">
+
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="dashboard.html">
+
+                        <i class="bi bi-speedometer2 me-2"></i>
+
+                        Dashboard
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="allenquiry.html">
+
+                        <i class="bi bi-person-lines-fill me-2"></i>
+
+                        Enquiries
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="followUp.html">
+
+                        <i class="bi bi-arrow-repeat me-2"></i>
+
+                        Follow Up
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="lead.html">
+
+                        <i class="bi bi-arrow-repeat me-2"></i>
+
+                        Lead
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="daybook.html">
+
+                        <i class="bi bi-journal-text me-2"></i>
+
+                        Day Book
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link active"
+                            href="pettycash.html">
+
+                        <i class="bi bi-wallet2 me-2"></i>
+
+                        Petty Cash
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="vendorpayment.html"
+                            id="vendorPaymentMenu">
+
+                        <i class="bi bi-building me-2"></i>
+
+                        Vendor Payment
+
+                    </a>
+
+                </li>
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="vendorpayment.html"
+                            id="employeePaymentMenu">
+
+                        <i class="bi bi-building me-2"></i>
+
+                        Employee Payment
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="flatsale.html">
+
+                        <i class="bi bi-house-check me-2"></i>
+
+                        Flat Sales
+
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+        </div>
+
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <div class="col-md-10 p-4">
+
+
+            <!-- Heading -->
+
+            <div class="mb-4">
+
+                <h2 class="page-title">
+
+                    Add Petty Cash
+
+                </h2>
+
+                <p class="text-muted">
+
+                    Add a new petty cash expense.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- ================= FORM ================= -->
+
+            <div class="card form-card shadow-sm">
+
+                <div class="card-body">
+
+                    <form id="pettyCashForm">
+
+
+                        <div class="row g-3">
+
+
+                            <!-- Date -->
+
+                            <div class="col-md-6">
+
+                                <label
+                                        class="form-label"
+                                        for="transactionDate">
+
+                                    Transaction Date
+
+                                </label>
+
+                                <input
+                                        type="date"
+                                        class="form-control"
+                                        id="transactionDate"
+                                        required>
+
+                            </div>
+
+
+
+                            <!-- Expense Type -->
+
+                            <div class="col-md-6">
+
+                                <label
+                                        class="form-label"
+                                        for="expenseType">
+
+                                    Expense Type
+
+                                </label>
+
+                                <select
+                                        class="form-select"
+                                        id="expenseType"
+                                        required>
+
+                                    <option value="">
+
+                                        Select Expense Type
+
+                                    </option>
+
+                                    <option value="Stationery">
+
+                                        Stationery
+
+                                    </option>
+
+                                    <option value="Tea/Coffee">
+
+                                        Tea/Coffee
+
+                                    </option>
+
+                                    <option value="Travel">
+
+                                        Travel
+
+                                    </option>
+
+                                    <option value="Printing">
+
+                                        Printing
+
+                                    </option>
+
+                                    <option value="Courier">
+
+                                        Courier
+
+                                    </option>
+
+                                    <option value="Office Maintenance">
+
+                                        Office Maintenance
+
+                                    </option>
+
+                                    <option value="Other">
+
+                                        Other
+
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- Particulars -->
+
+                            <div class="col-md-6">
+
+                                <label
+                                        class="form-label"
+                                        for="particulars">
+
+                                    Particulars
+
+                                </label>
+
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="particulars"
+                                        placeholder="Enter expense details"
+                                        required>
+
+                            </div>
+
+
+
+                            <!-- Paid To -->
+
+                            <div class="col-md-6">
+
+                                <label
+                                        class="form-label"
+                                        for="paidTo">
+
+                                    Paid To
+
+                                </label>
+
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="paidTo"
+                                        placeholder="Enter person/shop name"
+                                        required>
+
+                            </div>
+
+
+
+                            <!-- Amount -->
+
+                            <div class="col-md-6">
+
+                                <label
+                                        class="form-label"
+                                        for="amount">
+
+                                    Amount
+
+                                </label>
+
+                                <input
+                                        type="number"
+                                        class="form-control"
+                                        id="amount"
+                                        placeholder="Enter amount"
+                                        min="0"
+                                        step="0.01"
+                                        required>
+
+                            </div>
+
+
+
+                            <!-- Payment Mode -->
+
+                            <div class="col-md-6">
+
+                                <label
+                                        class="form-label"
+                                        for="paymentMode">
+
+                                    Payment Mode
+
+                                </label>
+
+                                <select
+                                        class="form-select"
+                                        id="paymentMode"
+                                        required>
+
+                                    <option value="">
+
+                                        Select Payment Mode
+
+                                    </option>
+
+                                    <option value="Cash">
+
+                                        Cash
+
+                                    </option>
+
+                                    <option value="UPI">
+
+                                        UPI
+
+                                    </option>
+
+                                    <option value="Bank Transfer">
+
+                                        Bank Transfer
+
+                                    </option>
+
+                                    <option value="Cheque">
+
+                                        Cheque
+
+                                    </option>
+
+                                    <option value="Other">
+
+                                        Other
+
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- Remarks -->
+
+                            <div class="col-12">
+
+                                <label
+                                        class="form-label"
+                                        for="remarks">
+
+                                    Remarks
+
+                                </label>
+
+                                <textarea
+                                        class="form-control"
+                                        id="remarks"
+                                        rows="3"
+                                        placeholder="Enter remarks"></textarea>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- Buttons -->
+
+                        <div class="mt-4">
+
+                            <button
+                                    type="submit"
+                                    class="btn btn-primary me-2">
+
+                                <i class="bi bi-check-circle me-1"></i>
+
+                                Save Petty Cash
+
+                            </button>
+
+
+                            <button
+                                    type="button"
+                                    class="btn btn-outline-secondary me-2"
+                                    onclick="clearForm()">
+
+                                Clear
+
+                            </button>
+
+
+                            <button
+                                    type="button"
+                                    class="btn btn-outline-secondary"
+                                    onclick="goBack()">
+
+                                <i class="bi bi-arrow-left me-1"></i>
+
+                                Back
+
+                            </button>
+
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+    const API_URL =
+        "/skyline/dashboard/pettycash";
+
+
+    document.getElementById(
+        "transactionDate"
+    ).value =
+        new Date()
+            .toISOString()
+            .split("T")[0];
+
+
+
+    document.getElementById(
+        "pettyCashForm"
+    ).addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const pettyCash = {
+
+                transactionDate:
+                document.getElementById(
+                    "transactionDate"
+                ).value,
+
+                expenseType:
+                document.getElementById(
+                    "expenseType"
+                ).value,
+
+                particulars:
+                document.getElementById(
+                    "particulars"
+                ).value,
+
+                paidTo:
+                document.getElementById(
+                    "paidTo"
+                ).value,
+
+                amount:
+                document.getElementById(
+                    "amount"
+                ).value,
+
+                paymentMode:
+                document.getElementById(
+                    "paymentMode"
+                ).value,
+
+                remarks:
+                document.getElementById(
+                    "remarks"
+                ).value
+
+            };
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        API_URL,
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify(
+                                    pettyCash
+                                )
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Failed to save petty cash"
+                    );
+
+                }
+
+
+                alert(
+                    "Petty Cash saved successfully!"
+                );
+
+
+                window.location.href =
+                    "pettycash.html";
+
+            }
+            catch(error) {
+
+                console.error(error);
+
+                alert(
+                    "Failed to save petty cash."
+                );
+
+            }
+
+        }
+    );
+
+
+
+    function clearForm() {
+
+        document.getElementById(
+            "pettyCashForm"
+        ).reset();
+
+
+        document.getElementById(
+            "transactionDate"
+        ).value =
+            new Date()
+                .toISOString()
+                .split("T")[0];
+
+    }
+
+
+
+    function goBack() {
+
+        window.location.href =
+            "pettycash.html";
+
+    }
+
+
+
+    function logout() {
+
+        const confirmLogout =
+            confirm(
+                "Are you sure you want to logout?"
+            );
+
+
+        if (confirmLogout) {
+
+            window.location.href =
+                "login.html";
+
+        }
+
+    }
+
+</script>
+<script src="role.js"></script>
+
+</body>
+
+</html>
